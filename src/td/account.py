@@ -533,7 +533,7 @@ class StorageAccount(BaseObject):  # nocov
         return td.MTP.Config(td.MTP.Environment.Production)
 
     def readMapWith(
-        self, localKey: td.AuthKey, legacyPasscode: QByteArray = QByteArray()
+        self, localKey: td.AuthKey, legacyPasscode: QByteArray = None
     ):
         # Intended for internal usage only
         try:
