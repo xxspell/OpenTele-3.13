@@ -40,7 +40,13 @@ from types import FunctionType
 
 import asyncio
 
-
+QByteArray=None
+QDataStream=None
+QBuffer=None
+QIODevice=None
+QSysInfo=None
+QDir=None
+QFile=None
 APP_VERSION = 3004000
 TDF_MAGIC = b"TDF$"
 
