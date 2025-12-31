@@ -12,7 +12,8 @@ import logging
 # if TYPE_CHECKING:
 #     from ..opentele import *
 
-
+def QByteArray():
+    pass
 class MapData(BaseObject):  # nocov
     def __init__(self, basePath: str) -> None:
 
