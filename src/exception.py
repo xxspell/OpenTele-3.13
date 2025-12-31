@@ -2,7 +2,7 @@ from __future__ import annotations
 import inspect
 import types
 import typing
-from PyQt5.QtCore import QDataStream
+# from PyQt5.QtCore import QDataStream
 
 
 class OpenTeleException(BaseException):  # nocov
@@ -326,11 +326,11 @@ def Expects(
         raise exception
 
 
-def ExpectStreamStatus(stream: QDataStream, message: str = "Could not stream data"):
+def ExpectStreamStatus(stream, message: str = "Could not stream data"):
     Expects(
-        stream.status() == QDataStream.Status.Ok,
-        stack_index=2,
-        exception=QDataStreamFailed(
-            "Could not read keys count from mtp authorization.", stack_index=2
-        ),
+        # # stream.status() == QDataStream.Status.Ok,
+        # stack_index=2,
+        # exception=QDataStreamFailed(
+        #     "Could not read keys count from mtp authorization.", stack_index=2
+        # ),
     )
