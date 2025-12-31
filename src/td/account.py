@@ -12,8 +12,8 @@ import logging
 # if TYPE_CHECKING:
 #     from ..opentele import *
 
-def QByteArray():
-    pass
+# def None:
+#     pass
 class MapData(BaseObject):  # nocov
     def __init__(self, basePath: str) -> None:
 
@@ -62,9 +62,9 @@ class MapData(BaseObject):  # nocov
             ) from e
 
         legacySalt, legacyKeyEncrypted, mapEncrypted = (
-            QByteArray(),
-            QByteArray(),
-            QByteArray(),
+            None,
+            None,
+            None,
         )
 
         mapData.stream >> legacySalt >> legacyKeyEncrypted >> mapEncrypted
@@ -99,7 +99,7 @@ class MapData(BaseObject):  # nocov
         except OpenTeleException as e:
             raise TDataReadMapDataFailed("Could not decrypt map data") from e
 
-        selfSerialized = QByteArray()
+        selfSerialized = None
         draftsMap: typing.Dict[PeerId, FileKey] = {}
         draftCursorsMap: typing.Dict[PeerId, FileKey] = {}
         draftsNotReadMap: typing.Dict[PeerId, bool] = {}
@@ -508,7 +508,7 @@ class StorageAccount(BaseObject):  # nocov
 
         Expects(blockId == 75, TDataInvalidMagic("Not supported file version"))
 
-        serialized = QByteArray()
+        serialized = None
         mtp.stream >> serialized
         self.owner._setMtpAuthorization(serialized)
 
@@ -521,7 +521,7 @@ class StorageAccount(BaseObject):  # nocov
 
         try:
             file = td.Storage.ReadEncryptedFile("config", self.basePath, self.localKey)  # type: ignore
-            serialized = QByteArray()
+            serialized = None
             file.stream >> serialized
 
             ExpectStreamStatus(file.stream, "Could not stream data from MtpConfig")
@@ -573,8 +573,8 @@ class StorageAccount(BaseObject):  # nocov
         map = td.Storage.FileWriteDescriptor("map", basePath)
 
         # i don't know what's the purpose of this, but it's in tdesktop source code
-        map.writeData(QByteArray())
-        map.writeData(QByteArray())
+        map.writeData(None)
+        map.writeData(None)
 
         mapDataEncrypted = self.mapData.prepareToWrite()
         map.writeEncrypted(mapDataEncrypted, self.localKey)  # type: ignore
@@ -920,7 +920,7 @@ class Account(BaseObject):
                 stream.writeInt32(key.dcId)
                 stream.writeRawData(key.key)
 
-        result = QByteArray()
+        result = None
         stream = QDataStream(result, QIODevice.OpenModeFlag.WriteOnly)
         stream.setVersion(QDataStream.Version.Qt_5_1)
 
